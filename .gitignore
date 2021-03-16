@@ -1,9 +1,7 @@
-import config from "./config"
-
 node_modules
 
-  .vs_code
+.vs_code
 
-  ./ lib / config
+./ lib / config
 
 config.js
