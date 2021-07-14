@@ -1,4 +1,3 @@
-process.env.NTBA_FIX_319 = 1
 const TelegramBot = require('node-telegram-bot-api')
 
 const { startOptions } = require('./lib/keyboardOptions')
@@ -22,8 +21,7 @@ const bot = new TelegramBot(token, {
 })
 
 bot.on('message', async (msg) => {
-  console.log(msg)
-
+  console.log(msg);
   if (msg.text === '/start') {
     bot.sendMessage(msg.from.id, startMessage, {
       reply_markup: startOptions()

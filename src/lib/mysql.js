@@ -34,7 +34,7 @@ class MySQL {
   putBooking(id, name, { start, end }, event_id) {
     return new Promise((resolve, reject) => {
       query(
-        'INSERT INTO bookings (id, name, start, end, event_id) VALUES(?, ?, ?, ?, ?)',
+        'INSERT INTO rehersal (id, name, start, end, event_id) VALUES(?, ?, ?, ?, ?)',
         [id, name, start, end, event_id],
         (err, res) => {
           if (err) {
@@ -54,7 +54,7 @@ class MySQL {
 
     return new Promise((resolve, reject) => {
       query(
-        'select start, end, name, id, event_id from bookings WHERE (start BETWEEN ? AND ?)',
+        'select start, end, name, id, event_id from rehersal WHERE (start BETWEEN ? AND ?)',
         [from, until],
         (err, res) => {
           if (err) {
@@ -81,7 +81,7 @@ class MySQL {
   listBookingsForUser(id) {
     return new Promise((resolve, reject) => {
       query(
-        'select start, end, name, id, event_id from bookings WHERE (id = ? AND start > NOW())',
+        'select start, end, name, id, event_id from rehersal WHERE (id = ? AND start > NOW())',
         [id],
         (err, res) => {
           if (err) {
@@ -95,7 +95,7 @@ class MySQL {
   getBooking(id, date) {
     return new Promise((resolve, reject) => {
       query(
-        'SELECT * FROM bookings WHERE (id = ? AND start = ?)',
+        'SELECT * FROM rehersal WHERE (id = ? AND start = ?)',
         [id, date],
         (err, res) => {
           if (err) {
@@ -109,7 +109,7 @@ class MySQL {
   deleteBooking(id, date) {
     return new Promise((resolve, reject) => {
       query(
-        'DELETE FROM bookings WHERE (id = ? AND start = ?)',
+        'DELETE FROM rehersal WHERE (id = ? AND start = ?)',
         [id, date],
         (err, res) => {
           if (err) {
@@ -123,7 +123,7 @@ class MySQL {
   deleteOldBookings() {
     return new Promise((resolve, reject) => {
       query(
-        'DELETE FROM bookings WHERE (start <= NOW())',
+        'DELETE FROM rehersal WHERE (start <= NOW())',
         (err, res) => {
           if (err) {
             reject(err)
